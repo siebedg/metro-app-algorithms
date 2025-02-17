@@ -1,4 +1,9 @@
-import { dijkstra, weightedGraph, denseGraph, sparseGraph } from "../dijkstra";
+import {
+  dijkstra,
+  weightedGraph,
+  denseGraph,
+  sparseGraph,
+} from "../algorithms/dijkstra";
 
 // ---- weightedGraph ----
 describe("weightedGraph", () => {
@@ -10,20 +15,26 @@ describe("weightedGraph", () => {
 
   test("shortest path and distance from node '1' to '5'", () => {
     const result = dijkstra(weightedGraph, "1", "5");
-    const validPaths = [["1", "4", "5"], ["1", "2", "5"]];
+    const validPaths = [
+      ["1", "4", "5"],
+      ["1", "2", "5"],
+    ];
     expect(validPaths).toContainEqual(result.path);
     expect(result.distance).toBe(3);
   });
 
   test("shortest path and distance from node '1' to '10'", () => {
     const result = dijkstra(weightedGraph, "1", "10");
-    const validPaths = [["1", "4", "5", "10"], ["1", "2", "5", "10"]];
+    const validPaths = [
+      ["1", "4", "5", "10"],
+      ["1", "2", "5", "10"],
+    ];
     expect(validPaths).toContainEqual(result.path);
     expect(result.distance).toBe(5);
   });
 });
 
-// ---- denseGraph ---- 
+// ---- denseGraph ----
 describe("denseGraph", () => {
   test("shortest path and distance from node '1' to '20'", () => {
     const result = dijkstra(denseGraph, "1", "20");

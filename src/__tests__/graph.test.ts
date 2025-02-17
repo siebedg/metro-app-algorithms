@@ -1,4 +1,4 @@
-import { graph, findNeighbors } from "../bfs";
+import { graph, findNeighbors } from "../algorithms/bfs";
 
 test("get neighbours of a node", () => {
   expect(findNeighbors(graph, "1")).toEqual(["2", "3"]);
