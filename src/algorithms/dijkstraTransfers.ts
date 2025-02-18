@@ -13,52 +13,6 @@ export const weightedGraph = new Map<string, { node: string, weight: number, lin
     ["10", [{ node: "5", weight: 2, line: "Yellow" }, { node: "8", weight: 4, line: "Yellow" }, { node: "9", weight: 2, line: "Yellow" }]]
 ]);
 
-export const denseGraph = new Map<string, { node: string, weight: number }[]> ([
-    // 🤖
-    // this graph is heavily connected
-    ["1", [{ node: "2", weight: 1 }, { node: "3", weight: 2 }, { node: "4", weight: 2 }, { node: "5", weight: 3 }]],
-    ["2", [{ node: "1", weight: 1 }, { node: "6", weight: 2 }, { node: "7", weight: 4 }, { node: "8", weight: 5 }]],
-    ["3", [{ node: "1", weight: 2 }, { node: "9", weight: 3 }, { node: "10", weight: 1 }, { node: "11", weight: 2 }]],
-    ["4", [{ node: "1", weight: 2 }, { node: "12", weight: 4 }, { node: "13", weight: 3 }]],
-    ["5", [{ node: "1", weight: 3 }, { node: "14", weight: 1 }, { node: "15", weight: 2 }]],
-    ["6", [{ node: "2", weight: 2 }, { node: "16", weight: 5 }, { node: "17", weight: 3 }]],
-    ["7", [{ node: "2", weight: 4 }, { node: "18", weight: 2 }, { node: "19", weight: 1 }]],
-    ["8", [{ node: "2", weight: 5 }, { node: "20", weight: 3 }]],
-    ["9", [{ node: "3", weight: 3 }, { node: "10", weight: 2 }]],
-    ["10", [{ node: "3", weight: 1 }, { node: "11", weight: 1 }, { node: "20", weight: 4 }]],
-    ["11", [{ node: "3", weight: 2 }, { node: "10", weight: 1 }]],
-    ["12", [{ node: "4", weight: 4 }]],
-    ["13", [{ node: "4", weight: 3 }]],
-    ["14", [{ node: "5", weight: 1 }]],
-    ["15", [{ node: "5", weight: 2 }]],
-    ["16", [{ node: "6", weight: 5 }]],
-    ["17", [{ node: "6", weight: 3 }]],
-    ["18", [{ node: "7", weight: 2 }]],
-    ["19", [{ node: "7", weight: 1 }]],
-    ["20", [{ node: "8", weight: 3 }, { node: "10", weight: 4 }]]
-]);
-
-export function generateSparseGraph(size: number): Map<string, { node: string, weight: number }[]> {
-    // 🤖
-    // this graph has fewer connections
-    const graph = new Map<string, { node: string, weight: number }[]>();
-
-    for (let i = 1; i <= size; i++) {
-        const neighbors = [];
-        for (let j = 1; j <= 3; j++) { // Each node connects to only 3 random others
-            const randomNode = Math.floor(Math.random() * size) + 1;
-            if (randomNode !== i) {
-                neighbors.push({ node: randomNode.toString(), weight: Math.floor(Math.random() * 10) + 1 });
-            }
-        }
-        graph.set(i.toString(), neighbors);
-    }
-
-    return graph;
-}
-
-export const sparseGraph = generateSparseGraph(100);
-
 export const testLineGraph = new Map<string, { node: string, weight: number, line: string }[]>([
     ["1", [{ node: "2", weight: 2, line: "Red" }, { node: "4", weight: 10, line: "Blue" }]],
     ["2", [{ node: "1", weight: 2, line: "Red" }, { node: "3", weight: 2, line: "Red" }]],
@@ -144,25 +98,5 @@ console.log("Test Case");
 const result = dijkstra(testLineGraph, "1", "4");
 console.log(result); 
 
-// weightedGraph
-// console.time("dijkstra performance testing: SIMPLE GRAPH");
-//     for (let i = 0; i < 100000; i++) {
-//         dijkstra(weightedGraph, "1", "10");
-//     }
-// console.timeEnd("dijkstra performance testing: SIMPLE GRAPH");
-
-// // denseGraph
-// console.time("dijkstra performance testing: DENSE GRAPH");
-//     for (let i = 0; i < 100000; i++) {
-//         dijkstra(denseGraph, "1", "20");
-//     }
-// console.timeEnd("dijkstra performance testing: DENSE GRAPH");
-
-// // sparseGraph
-// console.time("dijkstra performance testing: SPARSE GRAPH");
-//     for (let i = 0; i < 10000; i++) {
-//         dijkstra(sparseGraph, "1", "500");
-//     }
-// console.timeEnd("dijkstra performance testing: SPARSE GRAPH");
 
 

@@ -113,6 +113,13 @@ export function dijkstra(
   return { path, distance: distance[end] ?? Infinity};
 }
 
+console.time("test weightedGrapg 4 times")
+for (let i = 0; i < 20; i++) {
+    dijkstra(weightedGraph, "1", "4");
+}
+console.timeEnd("test weightedGrapg 4 times")
+
+
 // weightedGraph
 console.time("dijkstra performance testing: SIMPLE GRAPH");
     for (let i = 0; i < 100000; i++) {

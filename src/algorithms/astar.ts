@@ -101,7 +101,7 @@ export function astar(
 
       const newDistance = (distance[current.node] ?? Infinity) + neighbor.weight;
       
-      const heuristic = Math.sqrt((parseInt(end) - parseInt(neighbor.node)) ** 2);
+      const heuristic = Math.abs((parseInt(end) - parseInt(neighbor.node)));
       // it finds the difference between the current node and the end node in a straight line
 
       if (!(neighbor.node in distance) || newDistance < distance[neighbor.node]) {
